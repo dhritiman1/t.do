@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>t.do</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <div class="container center">
+      <div class="content center flex-column">
+        <div class="nav-bar flex-row">
+          <div class="menu-btn">
+            <div class="btn click-effect">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div>
+            <div class="menu center toggle-display flex-column">
+              <p class="switch-btn click-effect bottom-border" id="load-daily-todos">
+                daily-todos.
+              </p>
+              <p class="switch-btn click-effect top-border" id="load-projects">
+                projects.
+              </p>
+            </div>
+          </div>
+          <div class="stat center click-effect flex-row">
+            <img src="assets/icons/icons8-bar-chart-30.png" alt="statistics" />
+            <a href="#statistics">statistics</a>
+          </div>
+        </div>
+
+        <div class="header"><p>daily-todos.</p></div>
+
+        <div class="list-container center flex-column">
+          <div class="daily-list">
+            <!--
+            <div class="todo flex-row top-border" id="0">
+              <div class="check-box custom-checkbox center">
+                <input type="checkbox" name="check" id="check" />
+              </div>
+              <div class="title-box">
+                <p>code</p>
+              </div>
+              <div class="priority-box center">
+                <div class="priority">high</div>
+              </div>
+              <div class="date-box center">
+                <p>21.02.2023</p>
+              </div>
+              <div class="del-btn center img-del">
+                <img
+                  class="todo-del"
+                  src="assets/icons/icons8-delete-document-24.png"
+                  alt="delete"
+                />
+              </div>
+            </div>
+            -->
+
+            <div class="add add-text top-border bottom-border">
+              <p class="click-effect" id="add-todo">+ new</p>
+            </div>
+          </div>
+
+          <div class="projects-list toggle-display center flex-column">
+            <!--
+            <div class="project top-border center flex-column" id="0">
+              <div class="project-title">
+                <p>01. paid freelanching projects</p>
+              </div>
+
+              <div class="project-desc">
+                <p>left out freelanching projects due this month</p>
+              </div>
+
+              <div class="checklist center flex-column">
+                <p class="check-list-header">check-list</p>
+                <div class="list-item-box flex-column">
+                  <div class="list-item flex-row top-border" id="0">
+                    <div class="check-box custom-checkbox center">
+                      <input type="checkbox" name="check" id="check" />
+                    </div>
+                    <div class="title-box center">
+                      <p>complete paid projects</p>
+                    </div>
+                    <div class="due-date center">
+                      <p>28.02.2023</p>
+                    </div>
+                    <div class="del-btn center img-del">
+                      <img
+                        class="check-list-del"
+                        src="assets/icons/icons8-delete-document-24.png"
+                        alt="delete"
+                      />
+                    </div>
+                  </div>
+                  <div class="add add-text top-border bottom-border">
+                    <p class="click-effect" id="add-check-item">+ new</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            -->
+
+            <div
+              class="add-project click-effect add-text center top-border bottom-border"
+            >
+              <p id="add-project">+ add project</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

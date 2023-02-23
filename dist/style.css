@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  background: radial-gradient(circle at 10% 20%, #191a1f 0%, #151517 90%);
+  color: #cbd1d6;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom-border {
+  border-bottom: 1px solid rgba(184, 187, 190, 0.1450980392);
+}
+
+.top-border {
+  border-top: 1px solid rgba(184, 187, 190, 0.1450980392);
+}
+
+.custom-checkbox input[type=checkbox] {
+  cursor: pointer;
+  --webkit-appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin: 0;
+  font: inherit;
+  height: 12px;
+  width: 12px;
+  border: 1px solid #cbd1d6;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+.custom-checkbox input[type=checkbox]::before {
+  content: "";
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  transform: scale(0);
+  transition: 0.07s transform ease-in-out;
+  box-shadow: inset 1em 1em #cbd1d6;
+}
+.custom-checkbox input[type=checkbox]:checked::before {
+  transform: scale(1);
+}
+
+.img-del img {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.img-del img:active {
+  opacity: 10%;
+}
+
+.add-text p {
+  opacity: 90%;
+  cursor: pointer;
+}
+
+.click-effect:active {
+  opacity: 30%;
+}
+
+.toggle-display {
+  display: none;
+}
+
+.cross .bar1 {
+  transform: translate(0, 7px) rotate(-45deg);
+}
+.cross .bar2 {
+  opacity: 0;
+}
+.cross .bar3 {
+  transform: translate(0, -7px) rotate(45deg);
+}
+
+.container {
+  height: 100vh;
+}
+.container .content {
+  height: 95%;
+  width: min(90%, 2000px);
+  justify-content: flex-start;
+}
+.container .content .nav-bar {
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.container .content .nav-bar .menu-btn {
+  width: 24px;
+}
+.container .content .nav-bar .menu-btn .btn {
+  cursor: pointer;
+}
+.container .content .nav-bar .menu-btn .btn .bar1,
+.container .content .nav-bar .menu-btn .btn .bar2,
+.container .content .nav-bar .menu-btn .btn .bar3 {
+  width: 24px;
+  height: 2px;
+  background-color: #cbd1d6;
+  margin: 5px 0;
+  transition: 0.3s ease-in-out;
+}
+.container .content .nav-bar .menu-btn .menu {
+  z-index: 10;
+  position: absolute;
+  width: 150px;
+  height: 180px;
+  margin-top: 2px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #151517;
+  background: radial-gradient(circle at 10% 30%, #191a1f 0%, #151517 90%);
+}
+.container .content .nav-bar .menu-btn .menu .switch-btn {
+  text-align: center;
+  width: 100px;
+  cursor: pointer;
+  padding: 10px 0;
+}
+.container .content .nav-bar .stat {
+  cursor: pointer;
+}
+.container .content .nav-bar .stat img {
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+}
+.container .content .header {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.container .content .header p {
+  font-weight: 600;
+  font-size: 2.5rem;
+  padding: 0 20px;
+}
+.container .content .list-container {
+  width: 100%;
+}
+.container .content .list-container .daily-list {
+  width: calc(100% - 80px);
+}
+.container .content .list-container .daily-list .todo {
+  width: 100%;
+  padding: 5px 0;
+}
+.container .content .list-container .daily-list .todo .check-box {
+  width: 30px;
+}
+.container .content .list-container .daily-list .todo .title-box {
+  width: calc(100% - 310px);
+}
+.container .content .list-container .daily-list .todo .title-box p {
+  padding: 0 5px;
+}
+.container .content .list-container .daily-list .todo .priority-box {
+  width: 150px;
+}
+.container .content .list-container .daily-list .todo .priority-box div {
+  text-align: center;
+  background-color: rgba(56, 22, 13, 0.4980392157);
+  width: 80%;
+  border: 1px solid #151517;
+  border-radius: 40px;
+  filter: drop-shadow(2px 1px 2px rgba(0, 0, 0, 0.559));
+}
+.container .content .list-container .daily-list .todo .date-box {
+  width: 100px;
+}
+.container .content .list-container .daily-list .todo .del-btn {
+  width: 30px;
+}
+.container .content .list-container .daily-list .add {
+  padding: 5px 10px;
+}
+.container .content .list-container .projects-list {
+  width: calc(100% - 75px);
+}
+.container .content .list-container .projects-list .project {
+  width: 100%;
+  padding: 5px 0;
+  margin-bottom: 10px;
+}
+.container .content .list-container .projects-list .project div {
+  width: calc(100% - 30px);
+}
+.container .content .list-container .projects-list .project .project-title {
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.container .content .list-container .projects-list .project .project-desc {
+  font-style: italic;
+  font-weight: 300;
+  opacity: 80%;
+  margin-bottom: 5px;
+}
+.container .content .list-container .projects-list .project .checklist {
+  width: calc(100% - 70px);
+}
+.container .content .list-container .projects-list .project .checklist .check-list-header {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box {
+  width: calc(100% - 35px);
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box .list-item {
+  padding: 5px 0;
+  width: 100%;
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box .list-item .check-box {
+  width: 30px;
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box .list-item .title-box {
+  width: calc(100% - 180px);
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box .list-item .title-box p {
+  width: 100%;
+  padding: 0 5px;
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box .list-item .due-date {
+  width: 120px;
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box .list-item .due-date p {
+  text-align: center;
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box .list-item .del-btn {
+  width: 30px;
+}
+.container .content .list-container .projects-list .project .checklist .list-item-box .add {
+  width: 100%;
+  padding: 5px 10px;
+}
+.container .content .list-container .projects-list .add-project {
+  width: 300px;
+  padding: 5px 10px;
+}/*# sourceMappingURL=style.css.map */

@@ -79,14 +79,12 @@ body {
   display: none;
 }
 
-.cross .bar1 {
-  transform: translate(0, 7px) rotate(-45deg);
+.active-list {
+  text-decoration: underline;
 }
-.cross .bar2 {
-  opacity: 0;
-}
-.cross .bar3 {
-  transform: translate(0, -7px) rotate(45deg);
+
+.inactive-list {
+  opacity: 70%;
 }
 
 .container {
@@ -102,36 +100,13 @@ body {
   justify-content: space-between;
   margin-bottom: 5px;
 }
-.container .content .nav-bar .menu-btn {
-  width: 24px;
+.container .content .nav-bar .menu p {
+  padding: 0 5px;
 }
-.container .content .nav-bar .menu-btn .btn {
-  cursor: pointer;
-}
-.container .content .nav-bar .menu-btn .btn .bar1,
-.container .content .nav-bar .menu-btn .btn .bar2,
-.container .content .nav-bar .menu-btn .btn .bar3 {
-  width: 24px;
-  height: 2px;
-  background-color: #cbd1d6;
-  margin: 5px 0;
-  transition: 0.3s ease-in-out;
-}
-.container .content .nav-bar .menu-btn .menu {
-  z-index: 10;
-  position: absolute;
-  width: 150px;
-  height: 180px;
-  margin-top: 2px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px #151517;
-  background: radial-gradient(circle at 10% 30%, #191a1f 0%, #151517 90%);
-}
-.container .content .nav-bar .menu-btn .menu .switch-btn {
+.container .content .nav-bar .menu .switch-btn {
   text-align: center;
-  width: 100px;
   cursor: pointer;
-  padding: 10px 0;
+  padding: 0;
 }
 .container .content .nav-bar .stat {
   cursor: pointer;

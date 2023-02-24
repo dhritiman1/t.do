@@ -13,28 +13,26 @@
     <div class="container center">
       <div class="content center flex-column">
         <div class="nav-bar flex-row">
-          <div class="menu-btn">
-            <div class="btn click-effect">
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
-            <div class="menu center toggle-display flex-column">
-              <p class="switch-btn click-effect bottom-border" id="load-daily-todos">
-                daily-todos.
-              </p>
-              <p class="switch-btn click-effect top-border" id="load-projects">
-                projects.
-              </p>
-            </div>
+          <div class="menu center">
+            <p
+              class="switch-btn click-effect active-list"
+              id="load-daily-todos"
+            >
+              daily-todos.
+            </p>
+            <p>/</p>
+            <p class="switch-btn click-effect inactive-list" id="load-projects">
+              projects.
+            </p>
           </div>
+
           <div class="stat center click-effect flex-row">
             <img src="assets/icons/icons8-bar-chart-30.png" alt="statistics" />
             <a href="#statistics">statistics</a>
           </div>
         </div>
 
-        <div class="header"><p>daily-todos.</p></div>
+        <div class="header"><p class="list-title">daily-todos.</p></div>
 
         <div class="list-container center flex-column">
           <div class="daily-list">

@@ -3,8 +3,8 @@ const DOMFunctions = () => {
     const loadDailyList = document.querySelector("#load-daily-todos");
     const loadProjectList = document.querySelector("#load-projects");
 
-    const dailyList = document.querySelector(".daily-list");
-    const projectsList = document.querySelector(".projects-list");
+    const dailyList = document.querySelector(".daily-list-container");
+    const projectsList = document.querySelector(".projects-container");
 
     loadDailyList.addEventListener("click", () => {
       toggleList(dailyList, projectsList, "daily-todos.");

@@ -10,7 +10,7 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <div class="container center">
+    <div class="container center flex-column">
       <div class="content center flex-column">
         <div class="nav-bar flex-row">
           <div class="menu center">
@@ -20,10 +20,17 @@
             >
               daily-todos.
             </p>
+            <div class="no-circle center toggle-display">
+              <p class="no-of-todo">6</p>
+            </div>
+
             <p>/</p>
             <p class="switch-btn click-effect inactive-list" id="load-projects">
               projects.
             </p>
+            <div class="no-circle center toggle-display">
+              <p class="no-of-project">4</p>
+            </div>
           </div>
 
           <div class="stat center click-effect flex-row">
@@ -35,8 +42,9 @@
         <div class="header"><p class="list-title">daily-todos.</p></div>
 
         <div class="list-container center flex-column">
-          <div class="daily-list">
-            <!--
+          <div class="daily-list-container flex-column center">
+            <div class="daily-list">
+              <!--
             <div class="todo flex-row top-border" id="0">
               <div class="check-box custom-checkbox center">
                 <input type="checkbox" name="check" id="check" />
@@ -58,15 +66,50 @@
                 />
               </div>
             </div>
-            -->
+            --></div>
+            <div class="todo-form top-border center toggle-display">
+              <form method="post" class="form flex-row">
+                <div class="close-form center">
+                  <img
+                    class="click-effect"
+                    src="assets/icons/icons8-macos-close-24.png"
+                    alt="close"
+                  />
+                </div>
+                <div class="input text top-border bottom-border">
+                  <input
+                    type="text"
+                    name="title"
+                    id="task-title"
+                    placeholder="enter task title"
+                  />
+                </div>
+                <div class="input option top-border bottom-border">
+                  <select name="priority" id="task-priority">
+                    <option value="" disabled selected>--priority--</option>
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                  </select>
+                </div>
+                <div class="add-entry center">
+                  <p
+                    class="add-to-storage top-border bottom-border click-effect"
+                  >
+                    add
+                  </p>
+                </div>
+              </form>
+            </div>
 
             <div class="add add-text top-border bottom-border">
-              <p class="click-effect" id="add-todo">+ new</p>
+              <p class="click-effect" id="add-todo">+ new task</p>
             </div>
           </div>
 
-          <div class="projects-list toggle-display center flex-column">
-            <!--
+          <div class="projects-container center flex-column toggle-display">
+            <div class="projects-list center flex-column">
+              <!--
             <div class="project top-border center flex-column" id="0">
               <div class="project-title">
                 <p>01. paid freelanching projects</p>
@@ -103,16 +146,53 @@
                 </div>
               </div>
             </div>
-            -->
-
-            <div
-              class="add-project click-effect add-text center top-border bottom-border"
-            >
-              <p id="add-project">+ add project</p>
+            --></div>
+            <div class="project-form">
+              <form method="post">
+                <div class="input top-border">
+                  <input
+                    type="text"
+                    name="title"
+                    id="project-title"
+                    placeholder="add new project"
+                  />
+                </div>
+                <div class="input">
+                  <input
+                    type="text"
+                    name="description"
+                    id="project-desc"
+                    placeholder="description"
+                  />
+                </div>
+                <div class="input">
+                  <select name="priority" id="project-priority">
+                    <option value="" disabled selected>--priority--</option>
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                  </select>
+                </div>
+                <div class="input">
+                  <p>checklist:</p>
+                  <div class="check-input">
+                    <input type="text" name="" id="task-title" />
+                  </div>
+                  <div class="check-input">
+                    <label for="due-date">due-date:</label>
+                    <input type="date" name="due-date" id="task-due" />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="add-project add-text top-border bottom-border">
+              <p class="click-effect" id="add-project">+ add project</p>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="project-modal"></div>
     </div>
   </body>
 </html>

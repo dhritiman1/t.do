@@ -1,8 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 body {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBM Plex Sans";
   background: radial-gradient(circle at 10% 20%, #191a1f 0%, #151517 90%);
   color: #cbd1d6;
+}
+
+::-moz-placeholder {
+  color: #cbd1d6;
+  opacity: 80%;
+}
+
+::placeholder {
+  color: #cbd1d6;
+  opacity: 80%;
 }
 
 .center {
@@ -101,6 +111,40 @@ body {
   height: 20px;
 }
 
+.custom-text-input input[type=text] {
+  font-size: 0.9rem;
+  width: 100%;
+  background-color: rgba(34, 34, 34, 0.2078431373);
+  color: #cbd1d6;
+  padding: 3px 7px;
+  border-radius: 5px;
+  border: 0;
+  opacity: 90%;
+  transition: 0.1s;
+}
+.custom-text-input input[type=text]:focus {
+  opacity: 100%;
+  outline: none;
+}
+
+.custom-dropdown select {
+  font-size: 0.9rem;
+  color: white;
+  text-align: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: rgba(34, 34, 34, 0.2078431373);
+  padding: 3px 5px;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  opacity: 90%;
+}
+.custom-dropdown select:focus {
+  outline: none;
+}
+
 .container {
   height: 100vh;
 }
@@ -191,49 +235,9 @@ body {
   width: calc(100% - 240px);
   border-radius: 5px;
 }
-.container .content .list-container .daily-list-container .todo-form .form .text ::-moz-placeholder {
-  color: #cbd1d6;
-  opacity: 80%;
-}
-.container .content .list-container .daily-list-container .todo-form .form .text ::placeholder {
-  color: #cbd1d6;
-  opacity: 80%;
-}
-.container .content .list-container .daily-list-container .todo-form .form .text input[type=text] {
-  width: 100%;
-  font-family: "IBM Plex Sans";
-  background-color: rgba(34, 34, 34, 0.2078431373);
-  color: #cbd1d6;
-  padding: 3px 7px;
-  border-radius: 5px;
-  border: 0;
-  opacity: 90%;
-  transition: 0.1s;
-}
-.container .content .list-container .daily-list-container .todo-form .form .text input[type=text]:focus {
-  opacity: 100%;
-  outline: none;
-}
 .container .content .list-container .daily-list-container .todo-form .form .option {
   width: 120px;
   border-radius: 5px;
-}
-.container .content .list-container .daily-list-container .todo-form .form .option select {
-  color: white;
-  text-align: center;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-color: rgba(34, 34, 34, 0.2078431373);
-  padding: 3px 5px;
-  border-radius: 5px;
-  width: 100%;
-  font-family: "IBM PLex Sans";
-  border: none;
-  opacity: 90%;
-}
-.container .content .list-container .daily-list-container .todo-form .form .option select:focus {
-  outline: none;
 }
 .container .content .list-container .daily-list-container .todo-form .form .add-entry p {
   background-color: rgba(34, 34, 34, 0.2078431373);
@@ -250,6 +254,105 @@ body {
 }
 .container .content .list-container .projects-container {
   width: calc(100% - 80px);
+}
+.container .content .list-container .projects-container .project-form {
+  width: 100%;
+  padding: 5px 0;
+}
+.container .content .list-container .projects-container .project-form form {
+  width: calc(100% - 80px);
+}
+.container .content .list-container .projects-container .project-form form .input {
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+.container .content .list-container .projects-container .project-form form .input #project-title {
+  font-size: 1.1rem;
+}
+.container .content .list-container .projects-container .project-form form .input #project-desc {
+  font-size: 0.9rem;
+  width: 100%;
+  height: 100px;
+  padding: 5px 7px;
+  resize: none;
+  border-radius: 5px;
+  background-color: rgba(34, 34, 34, 0.2078431373);
+  border: 0;
+  color: white;
+}
+.container .content .list-container .projects-container .project-form form .input #project-desc:focus {
+  outline: none;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form {
+  width: calc(100% - 30px);
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .checklist-form-header {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box {
+  width: 100%;
+  justify-content: space-between;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .close-task-box {
+  width: 25px;
+  padding: 2px;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .close-task-box .close-task {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .check-input {
+  width: calc(100% - 395px);
+  border-radius: 5px;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .date {
+  width: 225px;
+  justify-content: space-evenly;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .date input[type=date] {
+  background-color: rgba(34, 34, 34, 0.2078431373);
+  color: #cbd1d6;
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 7px;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .date input[type=date]:focus {
+  outline: 0;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .date input[type=date]::-webkit-calendar-picker-indicator {
+  background-color: #151517;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .add-to-storage {
+  width: 100px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgba(34, 34, 34, 0.2078431373);
+}
+.container .content .list-container .projects-container .project-form form .checklist-form .add-check-task {
+  width: max(130px, 100% - max(75%, 400px));
+  border-radius: 5px;
+  margin: 10px;
+  padding: 3px 0;
+}
+.container .content .list-container .projects-container .project-form .save-close {
+  width: max(550px, 40%);
+  justify-content: space-around;
+}
+.container .content .list-container .projects-container .project-form .save-close div {
+  border-radius: 5px;
+  width: 150px;
+  opacity: 70%;
+  transition: 0.4s;
+}
+.container .content .list-container .projects-container .project-form .save-close div:hover {
+  background-color: rgba(34, 34, 34, 0.2078431373);
+  opacity: 100%;
 }
 .container .content .list-container .projects-container .projects-list {
   width: 100%;

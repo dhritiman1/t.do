@@ -69,14 +69,16 @@
             --></div>
             <div class="todo-form top-border center toggle-display">
               <form method="post" class="form flex-row">
-                <div class="close-form center">
+                <div class="close-todo-form center">
                   <img
                     class="click-effect"
                     src="assets/icons/icons8-macos-close-24.png"
                     alt="close"
                   />
                 </div>
-                <div class="input text top-border bottom-border">
+                <div
+                  class="input text top-border bottom-border custom-text-input"
+                >
                   <input
                     type="text"
                     name="title"
@@ -84,7 +86,9 @@
                     placeholder="enter task title"
                   />
                 </div>
-                <div class="input option top-border bottom-border">
+                <div
+                  class="input option top-border bottom-border custom-dropdown"
+                >
                   <select name="priority" id="task-priority">
                     <option value="" disabled selected>--priority--</option>
                     <option value="low">low</option>
@@ -108,6 +112,86 @@
           </div>
 
           <div class="projects-container center flex-column toggle-display">
+            <div
+              class="project-form toggle-display center flex-column top-border"
+            >
+              <form class="center flex-column" method="post">
+                <div class="input top-border bottom-border custom-text-input">
+                  <input
+                    type="text"
+                    name="title"
+                    id="project-title"
+                    placeholder="add new project"
+                  />
+                </div>
+                <div class="input top-border bottom-border custom-text-input">
+                  <textarea
+                    name="description"
+                    id="project-desc"
+                    cols="30"
+                    rows="10"
+                    placeholder="description"
+                  ></textarea>
+                </div>
+                <div class="input bottom-border top-border custom-dropdown">
+                  <select name="priority" id="project-priority">
+                    <option value="" disabled selected>--priority--</option>
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                  </select>
+                </div>
+
+                <div class="input checklist-form center flex-column">
+                  <p class="checklist-form-header">checklist:</p>
+                  <div class="check-form-box flex-row">
+                    <div class="close-task-box center">
+                      <img
+                        class="close-task click-effect"
+                        src="assets/icons/icons8-macos-close-24.png"
+                        alt="close"
+                      />
+                    </div>
+                    <div
+                      class="check-input center top-border bottom-border custom-text-input"
+                    >
+                      <input
+                        type="text"
+                        name="task-title"
+                        id="task-title"
+                        placeholder="add task"
+                      />
+                    </div>
+                    <div class="check-input date flex-row center">
+                      <label for="due-date">due-date:</label>
+                      <input type="date" name="due-date" id="task-due" />
+                    </div>
+                    <div class="add-to-storage center top-border bottom-border">
+                      <p class="click-effect add-to-ds">add</p>
+                    </div>
+                  </div>
+
+                  <div class="add-check-task center top-border bottom-border">
+                    <p id="add-check" class="click-effect add-text">add task</p>
+                  </div>
+                </div>
+              </form>
+              <div class="save-close flex-row">
+                <div
+                  class="close-box center top-border bottom-border click-effect"
+                  id="close-form"
+                >
+                  <p class="close-project-form">close</p>
+                </div>
+                <div
+                  class="save-box center top-border bottom-border click-effect"
+                  id="save-project"
+                >
+                  <p class="save-project">save</p>
+                </div>
+              </div>
+            </div>
+
             <div class="projects-list center flex-column">
               <!--
             <div class="project top-border center flex-column" id="0">
@@ -147,52 +231,13 @@
               </div>
             </div>
             --></div>
-            <div class="project-form">
-              <form method="post">
-                <div class="input top-border">
-                  <input
-                    type="text"
-                    name="title"
-                    id="project-title"
-                    placeholder="add new project"
-                  />
-                </div>
-                <div class="input">
-                  <input
-                    type="text"
-                    name="description"
-                    id="project-desc"
-                    placeholder="description"
-                  />
-                </div>
-                <div class="input">
-                  <select name="priority" id="project-priority">
-                    <option value="" disabled selected>--priority--</option>
-                    <option value="low">low</option>
-                    <option value="medium">medium</option>
-                    <option value="high">high</option>
-                  </select>
-                </div>
-                <div class="input">
-                  <p>checklist:</p>
-                  <div class="check-input">
-                    <input type="text" name="" id="task-title" />
-                  </div>
-                  <div class="check-input">
-                    <label for="due-date">due-date:</label>
-                    <input type="date" name="due-date" id="task-due" />
-                  </div>
-                </div>
-              </form>
-            </div>
+
             <div class="add-project add-text top-border bottom-border">
               <p class="click-effect" id="add-project">+ add project</p>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="project-modal"></div>
     </div>
   </body>
 </html>

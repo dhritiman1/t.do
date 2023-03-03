@@ -38,6 +38,39 @@ const DOMFunctions = () => {
     }
   };
 
+  const openForm = (btn, form, type) => {
+    btn.addEventListener("click", () => {
+      if (form.classList.contains("toggle-display")) {
+        form.classList.toggle("toggle-display");
+        btn.classList.toggle("toggle-display");
+      }
+    });
+
+    const closeForm = (() => {
+      const closebtn = document.querySelector(`.close-${type}-form`);
+      closebtn.addEventListener("click", () => {
+        if (!form.classList.contains("toggle-display")) {
+          form.classList.toggle("toggle-display");
+          btn.classList.toggle("toggle-display");
+        }
+      });
+    })();
+  };
+
+  const todoForm = (() => {
+    const btn = document.querySelector("#add-todo");
+    const form = document.querySelector(".todo-form");
+
+    openForm(btn, form, "todo");
+  })();
+
+  const projectFrom = (() => {
+    const btn = document.querySelector("#add-project");
+    const form = document.querySelector(".project-form");
+
+    openForm(btn, form, "project");
+  })();
+  
   return {};
 };
 

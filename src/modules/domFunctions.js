@@ -1,13 +1,16 @@
 import { format } from "date-fns";
-import todo from "./todo";
+import newTodo from "./todo";
 import toggle from "../func/toggle";
 import form from "../func/form";
-import save from "../func/save";
+import errorCheck from "../func/errorCheck";
+import todoList from "./todolist";
+import storage from "./storage";
 
 const DOMFunctions = () => {
-  const todoFunc = todo();
   const toggleFunc = toggle();
   const formFunc = form();
+  const todos = todoList();
+  const storageFunc = storage();
 
   const dispDate = (() => {
     const date = document.querySelector(".curr-date");
@@ -31,6 +34,82 @@ const DOMFunctions = () => {
     });
   })();
 
+  const save = (type) => {
+    const saveBtn = document.querySelector(`#save-${type}`);
+    const title = document.querySelector(`#${type}-title`);
+    const priority = document.querySelector(`#${type}-priority`);
+
+    saveBtn.addEventListener("click", () => {
+      if (errorCheck(title.value, priority.value, `${type}`)) {
+        if (type === "todo") {
+          todos.addTodo(newTodo(title.value, priority.value));
+          fillList(todos.getTodos());
+          storageFunc.storeTodos(todos.getTodos());
+        }
+        document.getElementById(`${type}-form`).reset();
+        formFunc.closeForm(
+          document.querySelector(`.${type}-form`),
+          document.querySelector(`#add-${type}`),
+          document.querySelector(`.add-${type}`)
+        );
+      }
+    });
+  };
+
+  const fillList = (todos) => {
+    clearList();
+    Object.keys(todos).forEach((key) => {
+      makeTodo(todos[key].title, todos[key].priority);
+    });
+  };
+
+  let i = 0;
+  const makeTodo = (title, priority) => {
+    const todo = document.createElement("div");
+    todo.classList.add("todo", "flex-row", "top-border");
+    todo.setAttribute("id", `todo-${i}`);
+    todo.setAttribute("data-index-number", `${i++}`);
+    todo.innerHTML = `
+      <div class="check-box custom-checkbox center">
+        <input type="checkbox" name="check" id="check" />
+      </div>
+      <div class="title-box">
+        <p>${title}</p>
+      </div>
+      <div class="priority-box center">
+        <div class="priority ${priority}">${priority}</div>
+      </div>
+      <div class="del-btn center img-del">
+        <img
+          class="todo-del"
+          src="assets/icons/icons8-delete-document-24.png"
+          alt="delete"
+        />
+      </div>`;
+
+    const hightodos = document.querySelector(".high-todo");
+    const mediumtodos = document.querySelector(".medium-todo");
+    const lowtodos = document.querySelector(".low-todo");
+
+    if (priority == "high") {
+      hightodos.appendChild(todo);
+    } else if (priority == "medium") {
+      mediumtodos.appendChild(todo);
+    } else {
+      lowtodos.appendChild(todo);
+    }
+  };
+
+  const clearList = () => {
+    i = 0;
+    const hightodos = document.querySelector(".high-todo");
+    const mediumtodos = document.querySelector(".medium-todo");
+    const lowtodos = document.querySelector(".low-todo");
+    hightodos.innerHTML = "";
+    mediumtodos.innerHTML = "";
+    lowtodos.innerHTML = "";
+  };
+
   const todoForm = (() => {
     const btn = document.querySelector("#add-todo");
     const btnBox = document.querySelector(".add-todo");
@@ -48,36 +127,6 @@ const DOMFunctions = () => {
     formFunc.openForm(btn, btnBox, form, "project");
     save("project");
   })();
-
-  const makeTodo = (title, priority) => {
-    let i = 0;
-    const todo = document.createElement("div");
-    todo.classList.add("todo", "flex-row", "top-border");
-    todo.setAttribute("id", `${i}`);
-    todo.innerHTML =
-      '<div class="check-box custom-checkbox center">\n' +
-      '  <input type="checkbox" name="check" id="check" />\n' +
-      "</div>\n" +
-      '<div class="title-box">\n' +
-      `  <p>${title}</p>\n` +
-      "</div>\n" +
-      `<div class="priority-box center">\n` +
-      `  <div class="priority ${priority}">${priority}</div>\n` +
-      "</div>\n" +
-      '<div class="del-btn center img-del">\n' +
-      "  <img\n" +
-      '    class="todo-del"\n' +
-      '    src="assets/icons/icons8-delete-document-24.png"\n' +
-      '    alt="delete"\n' +
-      "  />\n" +
-      "</div>";
-    i += 1;
-
-    const dailyList = document.querySelector(".daily-list");
-    dailyList.appendChild(todo);
-  };
-
-  return { makeTodo };
 };
 
 export default DOMFunctions;

@@ -1,18 +1,14 @@
-const todo = () => {
-  function todoObj(title, priority) {
-    return { title, priority };
-  }
+const newTodo = (title, priority) => {
+  const thisTitle = title;
+  const thisPriority = priority;
 
-  const _todos = [];
+  const setTitle = (newTitle) => (thisTitle = newTitle);
+  const getTitle = () => thisTitle;
 
-  const createTodo = (title, priority) => {
-    const newTodo = todoObj(title, priority);
-    _todos.push(newTodo);
-    dom.makeTodo(title, priority);
-    console.log(_todos);
-  };
+  const setPriority = (newPriority) => (thisPriority = newPriority);
+  const getPriority = () => thisPriority;
 
-  return { createTodo };
+  return { setTitle, setPriority, getTitle, getPriority };
 };
 
-export default todo;
+export default newTodo;

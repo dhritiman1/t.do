@@ -1,10 +1,12 @@
 const todoList = () => {
   const _todos = {};
   let i = 0;
+
   const addTodo = (todo) => {
     _todos[`todo-${i++}`] = {
       title: todo.getTitle(),
       priority: todo.getPriority(),
+      checked: todo.getChecked(),
     };
   };
 
@@ -12,7 +14,11 @@ const todoList = () => {
     return _todos;
   };
 
-  return { addTodo, getTodos };
+  const setTodos = (newTodos) => {
+    _todos = newTodos;
+  };
+
+  return { addTodo, getTodos, setTodos };
 };
 
 export default todoList;

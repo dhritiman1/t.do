@@ -163,6 +163,10 @@ body {
   background-color: #334243;
 }
 
+.checked {
+  opacity: 50%;
+}
+
 .container {
   height: 100vh;
 }

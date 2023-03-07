@@ -17,6 +17,31 @@ const DOMFunctions = () => {
     date.textContent = format(new Date(), "dd.MM.yyyy");
   })();
 
+  const updateNoOfTodos = (todos) => {
+    let todoNum = 0;
+    const todoNumContainer = document.querySelector("#todo-num-container");
+
+    Object.keys(todos).forEach((key) => {
+      if (todos[key].checked === false) {
+        todoNum += 1;
+      }
+    });
+
+    if (todoNumContainer.classList.contains("toggle-display")) {
+      todoNumContainer.classList.toggle("toggle-display");
+    }
+
+    if (
+      todoNum === 0 &&
+      !todoNumContainer.classList.contains("toggle-display")
+    ) {
+      todoNumContainer.classList.toggle("toggle-display");
+    }
+
+    const noOfTodos = document.querySelector(".no-of-todo");
+    noOfTodos.textContent = todoNum;
+  };
+
   const changeList = (() => {
     const loadDailyList = document.querySelector("#load-daily-todos");
     const loadProjectList = document.querySelector("#load-projects");
@@ -42,9 +67,10 @@ const DOMFunctions = () => {
     saveBtn.addEventListener("click", () => {
       if (errorCheck(title.value, priority.value, `${type}`)) {
         if (type === "todo") {
-          todos.addTodo(newTodo(title.value, priority.value));
-          fillList(todos.getTodos());
+          todos.addTodo(newTodo(title.value, priority.value, false));
           storageFunc.storeTodos(todos.getTodos());
+          fillList(todos.getTodos());
+          updateNoOfTodos(todos.getTodos());
         }
         document.getElementById(`${type}-form`).reset();
         formFunc.closeForm(
@@ -59,16 +85,16 @@ const DOMFunctions = () => {
   const fillList = (todos) => {
     clearList();
     Object.keys(todos).forEach((key) => {
-      makeTodo(todos[key].title, todos[key].priority);
+      makeTodo(todos[key].title, todos[key].priority, key);
     });
   };
 
   let i = 0;
-  const makeTodo = (title, priority) => {
+  const makeTodo = (title, priority, id) => {
     const todo = document.createElement("div");
     todo.classList.add("todo", "flex-row", "top-border");
-    todo.setAttribute("id", `todo-${i}`);
-    todo.setAttribute("data-index-number", `${i++}`);
+    todo.setAttribute("id", `${id}`);
+    //todo.setAttribute("data-index-number", `${i}`);
     todo.innerHTML = `
       <div class="check-box custom-checkbox center">
         <input type="checkbox" name="check" id="check" />
@@ -79,7 +105,7 @@ const DOMFunctions = () => {
       <div class="priority-box center">
         <div class="priority ${priority}">${priority}</div>
       </div>
-      <div class="del-btn center img-del">
+      <div class="del-btn del-${i} center img-del">
         <img
           class="todo-del"
           src="assets/icons/icons8-delete-document-24.png"
@@ -98,6 +124,22 @@ const DOMFunctions = () => {
     } else {
       lowtodos.appendChild(todo);
     }
+
+    const del = document.querySelector(`.del-${i++}`);
+    del.addEventListener("click", () => {
+      removeTodo(todo);
+    });
+  };
+
+  const removeTodo = (todo) => {
+    const id = todo.id;
+    const allTodos = todos.getTodos();
+    delete allTodos[id];
+
+    storageFunc.storeTodos(allTodos);
+    storageFunc.getTodos();
+    fillList(allTodos);
+    updateNoOfTodos(allTodos);
   };
 
   const clearList = () => {

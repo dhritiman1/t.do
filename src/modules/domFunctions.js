@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import newTodo from "./todo";
+import NewTodo from "./todo";
 import toggle from "../func/toggle";
 import form from "../func/form";
 import errorCheck from "../func/errorCheck";
@@ -67,10 +67,10 @@ const DOMFunctions = () => {
     saveBtn.addEventListener("click", () => {
       if (errorCheck(title.value, priority.value, `${type}`)) {
         if (type === "todo") {
-          todos.addTodo(newTodo(title.value, priority.value, false));
+          todos.addTodo(NewTodo(title.value, priority.value));
           storageFunc.storeTodos(todos.getTodos());
-          fillList(todos.getTodos());
-          updateNoOfTodos(todos.getTodos());
+          fillList(storageFunc.getTodos(), "");
+          updateNoOfTodos(storageFunc.getTodos());
         }
         document.getElementById(`${type}-form`).reset();
         formFunc.closeForm(
@@ -85,19 +85,24 @@ const DOMFunctions = () => {
   const fillList = (todos) => {
     clearList();
     Object.keys(todos).forEach((key) => {
-      makeTodo(todos[key].title, todos[key].priority, key);
+      makeTodo(todos[key].title, todos[key].priority, todos[key].checked, key);
     });
   };
 
   let i = 0;
-  const makeTodo = (title, priority, id) => {
+  const makeTodo = (title, priority, checked, id) => {
     const todo = document.createElement("div");
     todo.classList.add("todo", "flex-row", "top-border");
+    if (checked === true) {
+      todo.classList.add("checked");
+    }
     todo.setAttribute("id", `${id}`);
-    //todo.setAttribute("data-index-number", `${i}`);
+
+    const isChecked = checked === true ? "checked" : "";
+
     todo.innerHTML = `
       <div class="check-box custom-checkbox center">
-        <input type="checkbox" name="check" id="check" />
+        <input type="checkbox" name="check" id="check-${i}" ${isChecked}/>
       </div>
       <div class="title-box">
         <p>${title}</p>
@@ -125,10 +130,29 @@ const DOMFunctions = () => {
       lowtodos.appendChild(todo);
     }
 
-    const del = document.querySelector(`.del-${i++}`);
+    const del = document.querySelector(`.del-${i}`);
     del.addEventListener("click", () => {
       removeTodo(todo);
     });
+
+    const check = document.querySelector(`#check-${i}`);
+    check.addEventListener("click", () => {
+      manageCheckedTodo(todo, check.checked);
+    });
+
+    i++;
+  };
+
+  const manageCheckedTodo = (todo, checked) => {
+    const id = todo.id;
+    const allTodos = todos.getTodos();
+    allTodos[id].checked = checked;
+
+    storageFunc.storeTodos(allTodos);
+    fillList(storageFunc.getTodos());
+    updateNoOfTodos(storageFunc.getTodos());
+
+    console.log(allTodos[id]);
   };
 
   const removeTodo = (todo) => {
@@ -137,9 +161,8 @@ const DOMFunctions = () => {
     delete allTodos[id];
 
     storageFunc.storeTodos(allTodos);
-    storageFunc.getTodos();
-    fillList(allTodos);
-    updateNoOfTodos(allTodos);
+    fillList(storageFunc.getTodos());
+    updateNoOfTodos(storageFunc.getTodos());
   };
 
   const clearList = () => {

@@ -1,23 +1,23 @@
-const NewTodo = (title, priority, checked) => {
-  const thisTitle = title;
-  const thisPriority = priority;
-  const thisChecked = checked;
+const NewTodo = (title, priority) => {
+  const _todoTitle = title;
+  const _todoPriority = priority;
+  const _todoChecked = false;
 
-  const setTitle = (newTitle) => (thisTitle = newTitle);
-  const getTitle = () => thisTitle;
+  const setTitle = (newTitle) => (_todoTitle = newTitle);
+  const getTitle = () => _todoTitle;
 
-  const setPriority = (newPriority) => (thisPriority = newPriority);
-  const getPriority = () => thisPriority;
+  const setPriority = (newPriority) => (_todoPriority = newPriority);
+  const getPriority = () => _todoPriority;
 
-  const setChecked = (newChecked) => (thisChecked = newChecked);
-  const getChecked = () => thisChecked;
+  const setChecked = (newChecked) => (_todoChecked = newChecked);
+  const getChecked = () => _todoChecked;
 
   return {
     setTitle,
     setPriority,
+    setChecked,
     getTitle,
     getPriority,
-    setChecked,
     getChecked,
   };
 };

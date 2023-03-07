@@ -14,8 +14,8 @@ const todoList = () => {
     return _todos;
   };
 
-  const setTodos = (newTodos) => {
-    _todos = newTodos;
+  const setTodos = (id) => {
+    _todos[id] = newTodos;
   };
 
   return { addTodo, getTodos, setTodos };

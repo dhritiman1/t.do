@@ -89,7 +89,7 @@ const DOMFunctions = () => {
     });
   };
 
-  let i = 0;
+  let i = Object.keys(storageFunc.getTodos()).length;
   const makeTodo = (title, priority, checked, id) => {
     const todo = document.createElement("div");
     todo.classList.add("todo", "flex-row", "top-border");
@@ -151,8 +151,6 @@ const DOMFunctions = () => {
     storageFunc.storeTodos(allTodos);
     fillList(storageFunc.getTodos());
     updateNoOfTodos(storageFunc.getTodos());
-
-    console.log(allTodos[id]);
   };
 
   const removeTodo = (todo) => {
@@ -191,6 +189,12 @@ const DOMFunctions = () => {
 
     formFunc.openForm(btn, btnBox, form, "project");
     save("project");
+  })();
+
+  const initialLoad = (() => {
+    todos.setTodos(storageFunc.getTodos());
+    updateNoOfTodos(storageFunc.getTodos());
+    fillList(storageFunc.getTodos());
   })();
 };
 

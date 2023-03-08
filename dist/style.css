@@ -137,6 +137,8 @@ body {
   font-size: 0.9rem;
   color: white;
   text-align: center;
+  -moz-text-align-last: center;
+       text-align-last: center;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;

@@ -1,4 +1,8 @@
 const storage = () => {
+  if (localStorage.getItem("todolist") === null) {
+    localStorage.setItem("todolist", JSON.stringify({}));
+  }
+
   const storeTodos = (todolist) => {
     localStorage.setItem("todolist", JSON.stringify(todolist));
   };

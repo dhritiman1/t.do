@@ -1,6 +1,10 @@
+import Storage from "./storage";
+
 const todoList = () => {
-  const _todos = {};
-  let i = 0;
+  let storage = Storage();
+
+  let _todos = {};
+  let i = Object.keys(storage.getTodos()).length;
 
   const addTodo = (todo) => {
     _todos[`todo-${i++}`] = {
@@ -14,8 +18,8 @@ const todoList = () => {
     return _todos;
   };
 
-  const setTodos = (id) => {
-    _todos[id] = newTodos;
+  const setTodos = (newTodos) => {
+    _todos = newTodos;
   };
 
   return { addTodo, getTodos, setTodos };

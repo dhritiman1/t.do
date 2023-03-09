@@ -1,6 +1,7 @@
-const storage = () => {
+const Storage = () => {
   if (localStorage.getItem("todolist") === null) {
     localStorage.setItem("todolist", JSON.stringify({}));
+    localStorage.setItem("projectlist", JSON.stringify({}));
   }
 
   const storeTodos = (todolist) => {
@@ -12,7 +13,16 @@ const storage = () => {
     return todos;
   };
 
-  return { storeTodos, getTodos };
+  const setProjects = (project) => {
+    localStorage.setItem("projectlist", JSON.stringify(project));
+  };
+
+  const getProjects = () => {
+    const projects = JSON.parse(localStorage.getItem("projectlist"));
+    return projects;
+  };
+
+  return { storeTodos, getTodos, setProjects, getProjects };
 };
 
-export default storage;
+export default Storage;

@@ -319,11 +319,11 @@ body {
   border-radius: 50%;
 }
 .container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .check-input {
-  width: calc(100% - 395px);
+  width: calc(100% - 260px);
   border-radius: 5px;
 }
 .container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .date {
-  width: 225px;
+  width: 150px;
   justify-content: space-evenly;
 }
 .container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .date input[type=date] {
@@ -343,16 +343,17 @@ body {
   border-radius: 3px;
 }
 .container .content .list-container .projects-container .project-form form .checklist-form .check-form-box .add-to-storage {
-  width: 100px;
+  font-size: 0.85rem;
+  width: 60px;
   text-align: center;
   border-radius: 5px;
   background-color: rgba(34, 34, 34, 0.2078431373);
 }
 .container .content .list-container .projects-container .project-form form .checklist-form .add-check-task {
+  font-size: 0.85rem;
   width: max(130px, 100% - max(75%, 400px));
   border-radius: 5px;
-  margin: 10px;
-  padding: 3px 0;
+  padding: 2px 0;
 }
 .container .content .list-container .projects-container .project-form .save-close {
   width: max(550px, 40%);
@@ -371,59 +372,110 @@ body {
 .container .content .list-container .projects-container .projects-list {
   width: 100%;
 }
-.container .content .list-container .projects-container .projects-list .project {
+.container .content .list-container .projects-container .projects-list .h-project,
+.container .content .list-container .projects-container .projects-list .m-project,
+.container .content .list-container .projects-container .projects-list .l-project {
   width: 100%;
-  padding: 5px 0;
-  margin-bottom: 10px;
 }
-.container .content .list-container .projects-container .projects-list .project div {
+.container .content .list-container .projects-container .projects-list .h-project .project,
+.container .content .list-container .projects-container .projects-list .m-project .project,
+.container .content .list-container .projects-container .projects-list .l-project .project {
+  width: 100%;
+  padding: 0px 0;
+  margin-bottom: 30px;
+}
+.container .content .list-container .projects-container .projects-list .h-project .project div,
+.container .content .list-container .projects-container .projects-list .m-project .project div,
+.container .content .list-container .projects-container .projects-list .l-project .project div {
   width: calc(100% - 30px);
 }
-.container .content .list-container .projects-container .projects-list .project .project-title {
+.container .content .list-container .projects-container .projects-list .h-project .project .project-priority,
+.container .content .list-container .projects-container .projects-list .m-project .project .project-priority,
+.container .content .list-container .projects-container .projects-list .l-project .project .project-priority {
+  width: 100%;
+  height: 5px;
+}
+.container .content .list-container .projects-container .projects-list .h-project .project .project-header,
+.container .content .list-container .projects-container .projects-list .m-project .project .project-header,
+.container .content .list-container .projects-container .projects-list .l-project .project .project-header {
+  width: calc(100% - 15px);
+}
+.container .content .list-container .projects-container .projects-list .h-project .project .project-header .project-title,
+.container .content .list-container .projects-container .projects-list .m-project .project .project-header .project-title,
+.container .content .list-container .projects-container .projects-list .l-project .project .project-header .project-title {
   font-weight: 500;
   font-size: 1.8rem;
 }
-.container .content .list-container .projects-container .projects-list .project .project-desc {
+.container .content .list-container .projects-container .projects-list .h-project .project .project-header .remove-project-box,
+.container .content .list-container .projects-container .projects-list .m-project .project .project-header .remove-project-box,
+.container .content .list-container .projects-container .projects-list .l-project .project .project-header .remove-project-box {
+  width: 30px;
+}
+.container .content .list-container .projects-container .projects-list .h-project .project .project-desc,
+.container .content .list-container .projects-container .projects-list .m-project .project .project-desc,
+.container .content .list-container .projects-container .projects-list .l-project .project .project-desc {
   font-style: italic;
   font-weight: 300;
   opacity: 80%;
   margin-bottom: 5px;
 }
-.container .content .list-container .projects-container .projects-list .project .checklist {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist {
   width: calc(100% - 70px);
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .check-list-header {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .check-list-header,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .check-list-header,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .check-list-header {
   font-size: 1.2rem;
   margin-bottom: 5px;
   width: 100%;
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box {
   width: calc(100% - 35px);
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box .list-item {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box .list-item,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box .list-item,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box .list-item {
   padding: 5px 0;
   width: 100%;
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box .list-item .check-box {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box .list-item .check-box,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box .list-item .check-box,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box .list-item .check-box {
   width: 30px;
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box .list-item .title-box {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box .list-item .title-box,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box .list-item .title-box,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box .list-item .title-box {
   width: calc(100% - 180px);
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box .list-item .title-box p {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box .list-item .title-box p,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box .list-item .title-box p,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box .list-item .title-box p {
   width: 100%;
   padding: 0 5px;
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box .list-item .due-date {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box .list-item .due-date,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box .list-item .due-date,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box .list-item .due-date {
   width: 120px;
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box .list-item .due-date p {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box .list-item .due-date p,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box .list-item .due-date p,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box .list-item .due-date p {
   text-align: center;
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box .list-item .del-btn {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box .list-item .del-btn,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box .list-item .del-btn,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box .list-item .del-btn {
   width: 30px;
 }
-.container .content .list-container .projects-container .projects-list .project .checklist .list-item-box .add {
+.container .content .list-container .projects-container .projects-list .h-project .project .checklist .list-item-box .add,
+.container .content .list-container .projects-container .projects-list .m-project .project .checklist .list-item-box .add,
+.container .content .list-container .projects-container .projects-list .l-project .project .checklist .list-item-box .add {
   width: 100%;
   padding: 5px 10px;
 }

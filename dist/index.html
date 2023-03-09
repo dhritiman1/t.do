@@ -87,9 +87,9 @@
             </div>
 
             <div class="daily-list">
-              <div class="high-todo"></div>
-              <div class="medium-todo"></div>
-              <div class="low-todo"></div>
+              <div class="h-todo"></div>
+              <div class="m-todo"></div>
+              <div class="l-todo"></div>
             </div>
 
             <div class="add-todo add-text top-border bottom-border">
@@ -127,40 +127,6 @@
                     <option value="high">high</option>
                   </select>
                 </div>
-
-                <div class="input checklist-form center flex-column">
-                  <p class="checklist-form-header">checklist:</p>
-                  <div class="check-form-box flex-row">
-                    <div class="close-task-box center">
-                      <img
-                        class="close-task click-effect"
-                        src="assets/icons/icons8-macos-close-24.png"
-                        alt="close"
-                      />
-                    </div>
-                    <div
-                      class="check-input center top-border bottom-border custom-text-input"
-                    >
-                      <input
-                        type="text"
-                        name="task-title"
-                        id="task-title"
-                        placeholder="add task"
-                      />
-                    </div>
-                    <div class="check-input date flex-row center">
-                      <label for="due-date">due-date:</label>
-                      <input type="date" name="due-date" id="task-due" />
-                    </div>
-                    <div class="add-to-storage center top-border bottom-border">
-                      <p class="click-effect add-to-ds">add</p>
-                    </div>
-                  </div>
-
-                  <div class="add-check-task center top-border bottom-border">
-                    <p id="add-check" class="click-effect add-text">add task</p>
-                  </div>
-                </div>
               </form>
               <div class="project-form-error">
                 <p class="error project-error-msg"></p>
@@ -182,44 +148,10 @@
             </div>
 
             <div class="projects-list center flex-column">
-              <!--
-            <div class="project top-border center flex-column" id="0">
-              <div class="project-title">
-                <p>01. paid freelanching projects</p>
-              </div>
-
-              <div class="project-desc">
-                <p>left out freelanching projects due this month</p>
-              </div>
-
-              <div class="checklist center flex-column">
-                <p class="check-list-header">check-list</p>
-                <div class="list-item-box flex-column">
-                  <div class="list-item flex-row top-border" id="0">
-                    <div class="check-box custom-checkbox center">
-                      <input type="checkbox" name="check" id="check" />
-                    </div>
-                    <div class="title-box center">
-                      <p>complete paid projects</p>
-                    </div>
-                    <div class="due-date center">
-                      <p>28.02.2023</p>
-                    </div>
-                    <div class="del-btn center img-del">
-                      <img
-                        class="check-list-del"
-                        src="assets/icons/icons8-delete-document-24.png"
-                        alt="delete"
-                      />
-                    </div>
-                  </div>
-                  <div class="add add-text top-border bottom-border">
-                    <p class="click-effect" id="add-check-item">+ new</p>
-                  </div>
-                </div>
-              </div>
+              <div class="h-project"></div>
+              <div class="m-project"></div>
+              <div class="l-project"></div>
             </div>
-            --></div>
 
             <div class="add-project add-text top-border bottom-border">
               <p class="click-effect" id="add-project">+ add project</p>

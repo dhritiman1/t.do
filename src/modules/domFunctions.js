@@ -16,29 +16,32 @@ const DOMFunctions = () => {
   const projects = projectList();
   const storageFunc = storage();
 
-  const updateNoOfTodos = (todos) => {
-    let todoNum = 0;
-    const todoNumContainer = document.querySelector("#todo-num-container");
+  const updateCount = (collection, type) => {
+    let num = 0;
+    const container = document.querySelector(`#${type}-num-container`);
 
-    Object.keys(todos).forEach((key) => {
-      if (todos[key].checked === false) {
-        todoNum += 1;
-      }
-    });
-
-    if (todoNumContainer.classList.contains("toggle-display")) {
-      todoNumContainer.classList.toggle("toggle-display");
+    if (container.classList.contains("toggle-display")) {
+      container.classList.toggle("toggle-display");
     }
 
-    if (
-      todoNum === 0 &&
-      !todoNumContainer.classList.contains("toggle-display")
-    ) {
-      todoNumContainer.classList.toggle("toggle-display");
+    if (type === "todo") {
+      Object.keys(collection).forEach((key) => {
+        if (collection[key].checked === false) {
+          num += 1;
+        }
+      });
+    } else if (type === "project") {
+      Object.keys(collection).forEach((key) => {
+        num += 1;
+      });
     }
 
-    const noOfTodos = document.querySelector(".no-of-todo");
-    noOfTodos.textContent = todoNum;
+    if (num === 0 && !container.classList.contains("toggle-display")) {
+      container.classList.toggle("toggle-display");
+    }
+
+    const count = document.querySelector(`.no-of-${type}`);
+    count.textContent = num;
   };
 
   const changeList = (() => {
@@ -74,14 +77,14 @@ const DOMFunctions = () => {
           todos.addTodo(NewTodo(title.value, priority.value));
           storageFunc.storeTodos(todos.getTodos());
           fillList(storageFunc.getTodos(), "todo");
-          updateNoOfTodos(storageFunc.getTodos());
+          updateCount(storageFunc.getTodos(), "todo");
         } else {
           projects.addProject(
             NewProject(title.value, priority.value, description.value)
           );
           storageFunc.setProjects(projects.getProjects());
           fillList(storageFunc.getProjects(), "project");
-          //updateNoOfProjects(storageFunc.getProjects());
+          updateNoOfProjects(storageFunc.getProjects());
         }
         document.getElementById(`${type}-form`).reset();
         formFunc.closeForm(
@@ -150,7 +153,7 @@ const DOMFunctions = () => {
 
     const del = document.querySelector(`.del-${i}`);
     del.addEventListener("click", () => {
-      removeTodo(todo);
+      remove(todo, "todo");
     });
 
     const check = document.querySelector(`#check-${i}`);
@@ -186,13 +189,23 @@ const DOMFunctions = () => {
       <p class="check-list-header">tasks:</p>
       <div class="list-item-box flex-column">
         <div class="add add-text top-border bottom-border">
-          <p class="click-effect" id="add-check-item">+ new</p>
+          <p class="click-effect" id="add-task-${j}">+ new</p>
         </div>
       </div>
     </div>
     `;
 
     sort("project", project, priority);
+
+    const del = document.querySelector(`.del-pr-${j}`);
+    del.addEventListener("click", () => {
+      remove(project, "project");
+    });
+
+    const addTask = document.querySelector(`#add-task-${j}`);
+    addTask.addEventListener("click", () => {
+      console.log(`add-task-${j}`);
+    });
 
     j++;
   };
@@ -204,18 +217,27 @@ const DOMFunctions = () => {
 
     storageFunc.storeTodos(allTodos);
     fillList(storageFunc.getTodos(), "todo");
-    updateNoOfTodos(storageFunc.getTodos());
+    updateCount(storageFunc.getTodos(), "todo");
   };
 
-  const removeTodo = (todo) => {
-    // element, type
-    const id = todo.id;
-    const allTodos = todos.getTodos();
-    delete allTodos[id];
+  const remove = (element, type) => {
+    const id = element.id;
 
-    storageFunc.storeTodos(allTodos);
-    fillList(storageFunc.getTodos(), "todo");
-    updateNoOfTodos(storageFunc.getTodos());
+    if (type === "todo") {
+      const allTodos = todos.getTodos();
+      delete allTodos[id];
+
+      storageFunc.storeTodos(allTodos);
+      fillList(storageFunc.getTodos(), "todo");
+      updateCount(storageFunc.getTodos(), "todo");
+    } else if (type === "project") {
+      const allProjects = projects.getProjects();
+      delete allProjects[id];
+
+      storageFunc.setProjects(allProjects);
+      fillList(storageFunc.getProjects(), "project");
+      updateCount(storageFunc.getProjects(), "project");
+    }
   };
 
   const clearList = (type) => {
@@ -257,7 +279,8 @@ const DOMFunctions = () => {
     todos.setTodos(todoList);
     projects.setProjects(projectList);
 
-    updateNoOfTodos(todoList);
+    updateCount(todoList, "todo");
+    updateCount(projectList, "project");
 
     Object.keys(todoList).forEach((key) => {
       makeTodo(

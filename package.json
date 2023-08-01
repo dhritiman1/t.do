@@ -21,7 +21,7 @@
   "homepage": "https://github.com/dhritiman1/todo#readme",
   "devDependencies": {
     "date-fns": "^2.29.3",
-    "webpack": "^5.75.0",
+    "webpack": "^5.76.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
   }
